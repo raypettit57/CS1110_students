@@ -119,9 +119,7 @@ Sprite sheets have a grid of frames and can be turned into a list like so:
 
 ````python
 # load a grid of 3 rows and 4 columns as a list of 12 images
-sheet = uvage.load_sprite_sheet(
-  "https://upload.wikimedia.org/wikipedia/commons/b/be/SpriteSheet.png",
-  3, 4)
+sheet = uvage.load_sprite_sheet("https://upload.wikimedia.org/wikipedia/commons/b/be/SpriteSheet.png", 3, 4)
 
 # make a gamebox image from one of those images
 b3 = uvage.from_image(camera.x, camera.y, sheet[3])
