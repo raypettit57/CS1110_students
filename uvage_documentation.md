@@ -513,11 +513,6 @@ Usage: `load_sprite_sheet(url_or_filename, rows, columns)`{.python}
 Loads a sprite sheet.
 Assumes the sheet has rows-by-columns evenly-spaced images and returns a list of those images.
 
-## pause
-Usage: `pause()`{.python}
-
-Pauses the timer used to run the `timer_loop`; an error if there is no timer to pause.
-
 ## stop_loop
 Usage: `stop_loop()`{.python}
 
@@ -544,8 +539,3 @@ def tick(keys):
 
 uvage.timer_loop(30, tick)
 ````
-
-## unpause
-Usage: `unpause()`{.python}
-
-Unpauses the timer used to run the `timer_loop`; an error if there is no timer to unpause.
