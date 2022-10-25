@@ -177,24 +177,6 @@ uvage.timer_loop(30, tick)
 
 
 
-
-
-
-
-
-
-
-
-
-
----
-title: Help on module uvage
-...
-
-
-This page is the full documentation of [`uvage.py`](files/uvage.py), extracted from its docstrings.
-Looking for a quick-start guide instead? See the [uvage sumamry overview](uvage-summary.html).
-
 # Name
 
 uvage
