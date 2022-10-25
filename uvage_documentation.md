@@ -17,10 +17,8 @@ You can change the 800 and 600 to be the width and height of the window you want
 The middle will usually create various gameboxes to be used later. For example:
 
 ````python
-# prep work: make the boxes and variables to be used later
+# prep work: make the gameboxes to be used later
 logo = uvage.from_image(0, 0, "https://www.python.org/static/img/python-logo.png")
-
-score = 0
 ````
 
 Every uvage program should end with an event loop. There are a lot of pieces to making these work, so uvage adds a simpler version:
