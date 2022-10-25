@@ -1,7 +1,5 @@
 # UVa Game Engine (uvage)
 
-## Quick-Start Guide
-
 ### Necessary structure
 
 Every uvage program has three parts. It begins with this exact code:
@@ -21,7 +19,7 @@ The middle will usually create various gameboxes to be used later. For example:
 logo = uvage.from_image(0, 0, "https://www.python.org/static/img/python-logo.png")
 ````
 
-Every uvage program should end with an event loop. There are a lot of pieces to making these work, so uvage adds a simpler version:
+Every uvage program should end with an event loop, this is often named `tick`:
 
 ````python
 # make a parameter-less method that will be called every frame.
@@ -33,8 +31,7 @@ def tick():
     camera.draw(logo)
     camera.display() # you almost always want to end this method with this line
 
-# tell uvage to call the tick method 30 times per second
-uvage.timer_loop(30, tick)
+# tell uvage to call the tick method 30 times per second uvage.timer_loop(30, tick)
 # this line of code will not be reached until after the window is closed
 ````
 
@@ -136,63 +133,6 @@ b3.image = sheet[4]
 You can also load many individual image files instead if you want.
 
 
-# Other ideas
-
-To only react to a key when it is first depressed, not as long as it is held down,
-add `keys.clear()` to the end of your tick method.
-
-````python
-def tick():
-    if uvage.is_pressing("up arrow"):
-        print("the up arrow key was pressed")
-    keys.clear() # makes uvage not report the same keys again
-                 # until after they are released and re-pressed
-    camera.display()
-
-uvage.timer_loop(30, tick)
-````
-
-There is also a `keys_loop` function you can use instead of the `timer_loop` if your game does nothing at all (not even background animations) between two keys being typed.
-
-````python
-def click(keys):
-    ifuvage.is_pressing("up arrow"):
-        print("the up arrow key was pressed")
-    camera.display()
-# tell uvage to call the click method each time a key is pressed
-uvage.keys_loop(click)
-````
-
-You can end your game by calling `uvage.stop_loop()`
-
-````python
-def tick(keys):
-    if uvage.is_pressing("q"):
-        uvage.stop_loop() # tick will not be called after this one call, ending the game
-    camera.display()
-
-uvage.timer_loop(30, tick)
-````
-
-
-
-
-# Name
-
-uvage
-
-# Description
-This code is the original work of Luther Tychonievich, who releases it
-into the public domain.
-
-As a courtesy, Luther would appreciate it if you acknowledged him in any work
-that benefited from this code.
-
-Edits, removals, and additions made by Adam Dirting under the supervision of Raymond Pettit.
-# Classes
-
--    [Camera](#camera)
--    [SpriteBox](#spritebox)
 
 
 ## Camera
@@ -458,6 +398,52 @@ Usage: `from_text(x, y, text, fontsize, color, bold=False, italic=False)`
 
 Creates a SpriteBox object at the given location with the given text as its content.
 
+## load_sprite_sheet
+Usage: `load_sprite_sheet(url_or_filename, rows, columns)`
+
+Loads a sprite sheet.
+Assumes the sheet has rows-by-columns evenly-spaced images and returns a list of those images.
+
+
+# More about keys and event loops
+
+To only react to a key when it is first depressed, not as long as it is held down,
+add `keys.clear()` to the end of your tick method.
+
+````python
+def tick():
+    if uvage.is_pressing("up arrow"):
+        print("the up arrow key was pressed")
+    keys.clear() # makes uvage not report the same keys again
+                 # until after they are released and re-pressed
+    camera.display()
+
+uvage.timer_loop(30, tick)
+````
+
+There is also a `keys_loop` function you can use instead of the `timer_loop` if your game does nothing at all (not even background animations) between two keys being typed.
+
+````python
+def click(keys):
+    ifuvage.is_pressing("up arrow"):
+        print("the up arrow key was pressed")
+    camera.display()
+# tell uvage to call the click method each time a key is pressed
+uvage.keys_loop(click)
+````
+
+You can end your game by calling `uvage.stop_loop()`
+
+````python
+def tick(keys):
+    if uvage.is_pressing("q"):
+        uvage.stop_loop() # tick will not be called after this one call, ending the game
+    camera.display()
+
+uvage.timer_loop(30, tick)
+````
+
+
 ## keys_loop
 Usage: `keys_loop(callback)`
 
@@ -479,11 +465,6 @@ uvage.keys_loop(onPress)
 
 You can *either* use `keys_loop` *or* use `timer_loop`, but not both.
 
-## load_sprite_sheet
-Usage: `load_sprite_sheet(url_or_filename, rows, columns)`
-
-Loads a sprite sheet.
-Assumes the sheet has rows-by-columns evenly-spaced images and returns a list of those images.
 
 ## stop_loop
 Usage: `stop_loop()`
