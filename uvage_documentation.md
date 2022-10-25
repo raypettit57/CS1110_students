@@ -139,7 +139,7 @@ You can also load many individual image files instead if you want.
 # Other ideas
 
 To only react to a key when it is first depressed, not as long as it is held down,
-add `keys.clear()`{.python} to the end of your tick method.
+add `keys.clear()` to the end of your tick method.
 
 ````python
 def tick():
@@ -202,28 +202,28 @@ and can be moved. Moving a camera changes what is visible.
 ### Methods defined here:
 
 #### clear
-Usage: `camera.clear(color)`{.python}
+Usage: `camera.clear(color)`
 
 Erases the screen by filling it with the given color
 
 #### display
-Usage: `camera.display()`{.python}
+Usage: `camera.display()`
 
 Causes what has been drawn recently by calls to draw(...) to be displayed on the screen
 
 #### draw
-Usage: `camera.draw(thing, *args)`{.python}
+Usage: `camera.draw(thing, *args)`
 
-`camera.draw(box)`{.python} draws the provided SpriteBox object
+`camera.draw(box)` draws the provided SpriteBox object
 
-`camera.draw(image, x, y)`{.python} draws the provided image centered at the provided coordinates
+`camera.draw(image, x, y)` draws the provided image centered at the provided coordinates
 
-`camera.draw("Hi", 12, "red", x, y)`{.python} draws the text `Hi` in a red 12-point font at x,y
+`camera.draw("Hi", 12, "red", x, y)` draws the text `Hi` in a red 12-point font at x,y
 
 #### move
-Usage: `camera.move(x, y=None)`{.python}
+Usage: `camera.move(x, y=None)`
 
-`camera.move(3, -7)`{.python} moves the screen's center to be 3 more pixels to the right and 7 more up
+`camera.move(3, -7)` moves the screen's center to be 3 more pixels to the right and 7 more up
 
 ### Attributes defined here
 
@@ -266,7 +266,7 @@ The following refer to the mouse cursor
 
 #### User-defined attributes
 
-You can add as many other attributes as you want, by (e.g.) saying `camera.number_of_coins_found = 5`{.python}.
+You can add as many other attributes as you want, by (e.g.) saying `camera.number_of_coins_found = 5`.
 
 ##  SpriteBox
 Intended to represent a sprite (i.e., an image that can be drawn as part of a larger view) and the box that contains it. Has various collision and movement methods built in.
@@ -276,35 +276,35 @@ SpriteBoxes are created using the functions `from_image`, `from_text`, or `from_
 ### Methods defined here:
 
 #### bottom_touches
-Usage: `box.bottom_touches(other, padding=0, padding2=None)`{.python}
+Usage: `box.bottom_touches(other, padding=0, padding2=None)`
 
-`b1.bottom_touches(b2)`{.python} returns `True`{.python} if both `b1.touches(b2)`{.python} and `b1`'s bottom edge is the one causing the overlap.
+`b1.bottom_touches(b2)` returns `True` if both `b1.touches(b2)` and `b1`'s bottom edge is the one causing the overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### contains
-Usage: `box.contains(x, y=None)`{.python}
+Usage: `box.contains(x, y=None)`
 
 checks if the given point is inside this SpriteBox's bounds or not
 
 #### copy
-Usage: `box.copy()`{.python}
+Usage: `box.copy()`
 
 Make a new SpriteBox just like this one and in the same location
 
 #### copy_at
-Usage: `box.copy_at(newx, newy)`{.python}
+Usage: `box.copy_at(newx, newy)`
 
 Make a new SpriteBox just like this one but at the given location instead of here
 
 #### draw
-Usage: `box.draw(surface)`{.python}
+Usage: `box.draw(surface)`
 
-`b1.draw(camera)`{.python} is the same as saying `camera.draw(b1)`{.python}
+`b1.draw(camera)` is the same as saying `camera.draw(b1)`
 
-`b1.draw(image)`{.python} draws a copy of `b1` on the image proivided
+`b1.draw(image)` draws a copy of `b1` on the image proivided
 
 #### flip
-Usage: `box.flip()`{.python}
+Usage: `box.flip()`
 
 mirrors the SpriteBox left-to-right. 
 
@@ -316,77 +316,77 @@ b1.flip()
 ````
 
 #### full_size
-Usage: `box.full_size()`{.python}
+Usage: `box.full_size()`
 
 change size of this SpriteBox to be the original size of the source image
 
 #### left_touches
-Usage: `box.left_touches(other, padding=0, padding2=None)`{.python}
+Usage: `box.left_touches(other, padding=0, padding2=None)`
 
-`b1.left_touches(b2)`{.python} returns `True`{.python} if both `b1.touches(b2)`{.python} and `b1`'s left edge is the one causing the overlap.
+`b1.left_touches(b2)` returns `True` if both `b1.touches(b2)` and `b1`'s left edge is the one causing the overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### move
-Usage: `box.move(x, y=None)`{.python}
+Usage: `box.move(x, y=None)`
 
 change position by the given amount in x and y. If only `x` given, assumed to be a point `[x, y]`
 
 #### move_both_to_stop_overlapping
-Usage: `box.move_both_to_stop_overlapping(other, padding=0, padding2=None)`{.python}
+Usage: `box.move_both_to_stop_overlapping(other, padding=0, padding2=None)`
 
-`b1.move_both_to_stop_overlapping(b2)`{.python} changes both `b1` and `b2`'s positions so that they no longer overlap.
+`b1.move_both_to_stop_overlapping(b2)` changes both `b1` and `b2`'s positions so that they no longer overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### move_speed
-Usage: `box.move_speed()`{.python}
+Usage: `box.move_speed()`
 
 change position by the current `speed` field of the SpriteBox object
 
 #### move_to_stop_overlapping
-Usage: `box.move_to_stop_overlapping(other, padding=0, padding2=None)`{.python}
+Usage: `box.move_to_stop_overlapping(other, padding=0, padding2=None)`
 
-`b1.move_to_stop_overlapping(b2)`{.python} makes the minimal change to `b1`'s position necessary so that they no longer overlap.
+`b1.move_to_stop_overlapping(b2)` makes the minimal change to `b1`'s position necessary so that they no longer overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### overlap
-Usage: `box.overlap( other, padding=0, padding2=None)`{.python}
+Usage: `box.overlap( other, padding=0, padding2=None)`
 
-`b1.overlap(b1)`{.python} returns a list of 2 values such that `self.move(result)`{.python} will cause them to not overlap
-Returns `[0, 0]`{.python} if there is no overlap (i.e., if `b1.touches(b2)`{.python} returns `False`{.python}).
+`b1.overlap(b1)` returns a list of 2 values such that `self.move(result)` will cause them to not overlap
+Returns `[0, 0]` if there is no overlap (i.e., if `b1.touches(b2)` returns `False`).
 
-`b1.overlap(b2, 5)`{.python} adds a 5-pixel padding to `b1` before computing the overlap.
-`b1.overlap(b2, 5, 10)`{.python} adds a 5-pixel padding in x and a 10-pixel padding in y before computing the overlap.
+`b1.overlap(b2, 5)` adds a 5-pixel padding to `b1` before computing the overlap.
+`b1.overlap(b2, 5, 10)` adds a 5-pixel padding in x and a 10-pixel padding in y before computing the overlap.
 
 #### right_touches
-Usage: `box.right_touches(other, padding=0, padding2=None)`{.python}
+Usage: `box.right_touches(other, padding=0, padding2=None)`
 
-`b1.right_touches(b2)`{.python} returns `True`{.python} if both `b1.touches(b2)`{.python} and `b1`'s right edge is the one causing the overlap.
+`b1.right_touches(b2)` returns `True` if both `b1.touches(b2)` and `b1`'s right edge is the one causing the overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### rotate
-Usage: `box.rotate(angle)`{.python}
+Usage: `box.rotate(angle)`
 
 Rotates the SpriteBox by the given angle (in degrees).
 
 #### scale_by
-Usage: `box.scale_by(multiplier)`{.python}
+Usage: `box.scale_by(multiplier)`
 
 Change the size of this SpriteBox by the given factor.
-`b1.scale_by(1)`{.python} does nothing; 
-`b1.scale_by(0.4)`{.python} makes b1 40% of its original width and height.
+`b1.scale_by(1)` does nothing; 
+`b1.scale_by(0.4)` makes b1 40% of its original width and height.
 
 #### top_touches
-Usage: `box.top_touches(other, padding=0, padding2=None)`{.python}
+Usage: `box.top_touches(other, padding=0, padding2=None)`
 
-`b1.top_touches(b2)`{.python} returns `True`{.python} if both `b1.touches(b2)`{.python} and `b1`'s top edge is the one causing the overlap.
+`b1.top_touches(b2)` returns `True` if both `b1.touches(b2)` and `b1`'s top edge is the one causing the overlap.
 See `touches` for a description of the optional padding arguments.
 
 #### touches
-Usage: `box.touches(other, padding=0, padding2=None)`{.python}
+Usage: `box.touches(other, padding=0, padding2=None)`
 
-`b1.touches(b1)`{.python} returns `True`{.python} if the two SpriteBoxes overlap, `False`{.python} if they do not.
-`b1.touches(b2, 5)`{.python} adds a 5-pixel padding to b1 before computing the touch.
-`b1.touches(b2, 5, 10)`{.python} adds a 5-pixel padding in x and a 10-pixel padding in y before computing the touch.
+`b1.touches(b1)` returns `True` if the two SpriteBoxes overlap, `False` if they do not.
+`b1.touches(b2, 5)` adds a 5-pixel padding to b1 before computing the touch.
+`b1.touches(b2, 5, 10)` adds a 5-pixel padding in x and a 10-pixel padding in y before computing the touch.
 
 ### Attributes defined here
 
@@ -439,27 +439,27 @@ The following attribute refers to the current look of the box:
 
 #### User-defined attributes
 
-You can add as many other attributes as you want, by (e.g.) saying `box.number_of_coins_found = 5`{.python}.
+You can add as many other attributes as you want, by (e.g.) saying `box.number_of_coins_found = 5`.
 
 # Functions
 
 ## from_color
-Usage: `from_color(x, y, color, width, height)`{.python}
+Usage: `from_color(x, y, color, width, height)`
 
 Creates a SpriteBox object at the given location with the given color, width, and height.
 
 ## from_image
-Usage: `from_image(x, y, filename_or_url)`{.python}
+Usage: `from_image(x, y, filename_or_url)`
 
 Creates a SpriteBox object at the given location from the provided filename or url.
 
 ## from_text
-Usage: `from_text(x, y, text, fontsize, color, bold=False, italic=False)`{.python}
+Usage: `from_text(x, y, text, fontsize, color, bold=False, italic=False)`
 
 Creates a SpriteBox object at the given location with the given text as its content.
 
 ## keys_loop
-Usage: `keys_loop(callback)`{.python}
+Usage: `keys_loop(callback)`
 
 Requests that uvage call the provided function each time a key is pressed.
 
@@ -480,18 +480,18 @@ uvage.keys_loop(onPress)
 You can *either* use `keys_loop` *or* use `timer_loop`, but not both.
 
 ## load_sprite_sheet
-Usage: `load_sprite_sheet(url_or_filename, rows, columns)`{.python}
+Usage: `load_sprite_sheet(url_or_filename, rows, columns)`
 
 Loads a sprite sheet.
 Assumes the sheet has rows-by-columns evenly-spaced images and returns a list of those images.
 
 ## stop_loop
-Usage: `stop_loop()`{.python}
+Usage: `stop_loop()`
 
 Completely quits one `timer_loop` or `keys_loop`, usually ending the program.
 
 ## timer_loop
-Usage: `timer_loop(fps, callback)`{.python}
+Usage: `timer_loop(fps, callback)`
 
 Requests that uvage call the provided function fps times a second
 
