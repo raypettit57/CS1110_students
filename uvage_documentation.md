@@ -481,15 +481,15 @@ Creates a SpriteBox object at the given location with the given text as its cont
 ## keys_loop
 Usage: `keys_loop(callback)`{.python}
 
-Requests that pygame call the provided function each time a key is pressed.
+Requests that uvage call the provided function each time a key is pressed.
 
 -    `callback`: a function that accepts the key pressed
 
 ````python
 def onPress(key):
-  if pygame.K_DOWN == key:
-      print 'down arrow pressed'
-  if pygame.K_a in keys:
+  if uvage.is_pressing("up arrow"):
+      print 'up arrow pressed'
+  if uvage.is_pressing("a"):
       print 'A key pressed'
   camera.draw(box)
   camera.display()
@@ -513,19 +513,17 @@ Completely quits one `timer_loop` or `keys_loop`, usually ending the program.
 ## timer_loop
 Usage: `timer_loop(fps, callback)`{.python}
 
-Requests that pygame call the provided function fps times a second
+Requests that uvage call the provided function fps times a second
 
 -    `fps`: a number between 1 and 1000.  Note that numbers above 60 are likely to cause the program to repsond sluggishly.
 -    `callback`: a function that accepts a set of keys pressed since the last tick.
 
 ````python
 seconds = 0
-def tick(keys):
+def tick():
   seconds += 1/30
-  if pygame.K_DOWN in keys:
+  if uvage.is_pressing("down arrow"):
       print 'down arrow pressed'
-  if not keys:
-      print 'no keys were pressed since the last tick'
   camera.draw(box)
   camera.display()
 
