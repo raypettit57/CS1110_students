@@ -1,17 +1,10 @@
----
-title: uvage - summary overview
-...
-
-This page is a quick-start guide to [`uvage.py`](files/uvage.py).
-Looking for something more definitive? See the [full documentation](uvage.html).
-
 # UVa Game Engine (uvage)
 
 ## Quick-Start Guide
 
 ### Necessary structure
 
-Every PyGame program has three parts. It begins with this exact code:
+Every uvage program has three parts. It begins with this exact code:
 
 ````python
 # beginning: must come first
