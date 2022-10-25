@@ -158,7 +158,7 @@ There is also a `keys_loop` function you can use instead of the `timer_loop` if 
 
 ````python
 def click(keys):
-    if pygame.K_UP in keys:
+    ifuvage.is_pressing("up arrow"):
         print("the up arrow key was pressed")
     camera.display()
 # tell uvage to call the click method each time a key is pressed
@@ -169,7 +169,7 @@ You can end your game by calling `uvage.stop_loop()`
 
 ````python
 def tick(keys):
-    if pygame.K_q in keys:
+    if uvage.is_pressing("q"):
         uvage.stop_loop() # tick will not be called after this one call, ending the game
     camera.display()
 
