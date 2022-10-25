@@ -447,11 +447,11 @@ The following attributes refer to the speed of the box:
 
 The following attribute refers to the current look of the box:
 
--    `image`, a [`pygame.Surface`](http://www.pygame.org/docs/ref/surface.html) representing the current look of the box.
+-    `image`, representing the current look of the box.
 
 #### Attributes you may access but not set
 
--    `rect`, a [`pygame.Rect`](http://www.pygame.org/docs/ref/rect.html) providing the location and size of the box.
+-    `rect`, providing the location and size of the box.
 
 #### Attributes you may set but not access
 
