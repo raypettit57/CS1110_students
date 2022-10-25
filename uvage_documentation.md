@@ -1,20 +1,22 @@
 ---
-title: gamebox - summary overview
+title: uvage - summary overview
 ...
 
-This page is a quick-start guide to [`gamebox.py`](files/gamebox.py).
-Looking for something more definitive? See the [full documentation](gamebox.html).
+This page is a quick-start guide to [`uvage.py`](files/uvage.py).
+Looking for something more definitive? See the [full documentation](uvage.html).
 
+# UVa Game Engine (uvage)
 
-# Necessary structure
+## Quick-Start Guide
+
+### Necessary structure
 
 Every PyGame program has three parts. It begins with this exact code:
 
 ````python
 # beginning: must come first
-import pygame
-import gamebox
-camera = gamebox.Camera(800, 600)
+import uvage
+camera = uvage.Camera(800, 600)
 ````
 
 You can change the 800 and 600 to be the width and height of the window you want to make instead.
@@ -23,26 +25,26 @@ The middle will usually create various gameboxes to be used later. For example:
 
 ````python
 # prep work: make the boxes and variables to be used later
-logo = gamebox.from_image(0, 0,
+logo = uvage.from_image(0, 0,
     "https://www.python.org/static/img/python-logo.png")
 
 score = 0
 ````
 
-Every PyGame program should end with an event loop. There are a lot of pieces to making these work, so gamebox adds a simpler version:
+Every PyGame program should end with an event loop. There are a lot of pieces to making these work, so uvage adds a simpler version:
 
 ````python
-# make a method that will be called every frame. Must have parameter"keys"
-def tick(keys):
-    if pygame.K_UP in keys: # you can check which keys are being pressed
+# make a parameter-less method that will be called every frame.
+def tick():
+    if uvage.is_pressing("up arrow"): # you can check which keys are being pressed
         print(" the up arrow key is currently being pressed")
     if camera.mouseclick: #true if some mouse button is being pressed
         logo.center = camera.mouse # the current mouse position
     camera.draw(logo)
     camera.display() # you almost always want to end this method with this line
 
-# tell gamebox to call the tick method 30 times per second
-gamebox.timer_loop(30, tick)
+# tell uvage to call the tick method 30 times per second
+uvage.timer_loop(30, tick)
 # this line of code will not be reached until after the window is closed
 ````
 
@@ -55,10 +57,10 @@ There are four common ways to make a gamebox: from a color, an image, some text,
 All begin with the `x, y` of the center of the gamebox.
 
 ````python
-b1 = gamebox.from_color(50, 100, "red", 20, 40) # x, y, color, width, height
-b2 = gamebox.from_image(10, 30, "https://www.python.org/static/img/python-logo.png")
+b1 = uvage.from_color(50, 100, "red", 20, 40) # x, y, color, width, height
+b2 = uvage.from_image(10, 30, "https://www.python.org/static/img/python-logo.png")
                        # x,  y,  url_or_filename
-b3 = gamebox.from_text(50, 100, "Hi", 12, "red", italic=True)
+b3 = uvage.from_text(50, 100, "Hi", 12, "red", italic=True)
     # x, y, text, size, color; optionally True/False for bold ​and italic too
 b4 = b2.copy_at(50, 100) # x, y
 ````
@@ -106,7 +108,7 @@ You can only make one camera per program. The camera controls what is on the scr
 What the camera `draw`s is invisible until after you ask it to `display` what it drew.
 
 ````python
-camera = gamebox.Camera(width, height)
+camera = uvage.Camera(width, height)
 print(camera.width)  # prints the width of the camera's viewport
 camera.clear("red")  # fills the screen with red
 
@@ -130,12 +132,12 @@ Sprite sheets have a grid of frames and can be turned into a list like so:
 
 ````python
 # load a grid of 3 rows and 4 columns as a list of 12 images
-sheet = gamebox.load_sprite_sheet(
+sheet = uvage.load_sprite_sheet(
   "https://upload.wikimedia.org/wikipedia/commons/b/be/SpriteSheet.png",
   3, 4)
 
 # make a gamebox image from one of those images
-b3 = gamebox.from_image(camera.x, camera.y, sheet[3])
+b3 = uvage.from_image(camera.x, camera.y, sheet[3])
 
 # to animate, change which image is being used each time you draw
 b3.image = sheet[4]
@@ -150,14 +152,14 @@ To only react to a key when it is first depressed, not as long as it is held dow
 add `keys.clear()`{.python} to the end of your tick method.
 
 ````python
-def tick(keys):
-    if pygame.K_UP in keys:
+def tick():
+    if uvage.is_pressing("up arrow"):
         print("the up arrow key was pressed")
-    keys.clear() # makes gamebox not report the same keys again
+    keys.clear() # makes uvage not report the same keys again
                  # until after they are released and re-pressed
     camera.display()
 
-gamebox.timer_loop(30, tick)
+uvage.timer_loop(30, tick)
 ````
 
 There is also a `keys_loop` function you can use instead of the `timer_loop` if your game does nothing at all (not even background animations) between two keys being typed.
@@ -167,22 +169,21 @@ def click(keys):
     if pygame.K_UP in keys:
         print("the up arrow key was pressed")
     camera.display()
-# tell gamebox to call the click method each time a key is pressed
-gamebox.keys_loop(click)
+# tell uvage to call the click method each time a key is pressed
+uvage.keys_loop(click)
 ````
 
-You can end your game by calling `gamebox.stop_loop()`
+You can end your game by calling `uvage.stop_loop()`
 
 ````python
 def tick(keys):
     if pygame.K_q in keys:
-        gamebox.stop_loop() # tick will not be called after this one call, ending the game
+        uvage.stop_loop() # tick will not be called after this one call, ending the game
     camera.display()
 
-gamebox.timer_loop(30, tick)
+uvage.timer_loop(30, tick)
 ````
 
-Looking for more? Try the [full gamebox documentation](gamebox.html).
 
 
 
@@ -197,16 +198,16 @@ Looking for more? Try the [full gamebox documentation](gamebox.html).
 
 
 ---
-title: Help on module gamebox
+title: Help on module uvage
 ...
 
 
-This page is the full documentation of [`gamebox.py`](files/gamebox.py), extracted from its docstrings.
-Looking for a quick-start guide instead? See the [gamebox sumamry overview](gamebox-summary.html).
+This page is the full documentation of [`uvage.py`](files/uvage.py), extracted from its docstrings.
+Looking for a quick-start guide instead? See the [uvage sumamry overview](uvage-summary.html).
 
 # Name
 
-gamebox
+uvage
 
 # Description
 This code is the original work of Luther Tychonievich, who releases it
@@ -215,6 +216,7 @@ into the public domain.
 As a courtesy, Luther would appreciate it if you acknowledged him in any work
 that benefited from this code.
 
+Edits, removals, and additions made by Adam Dirting under the supervision of Raymond Pettit.
 # Classes
 
 -    [Camera](#camera)
@@ -500,7 +502,7 @@ def onPress(key):
   camera.draw(box)
   camera.display()
 
-gamebox.keys_loop(onPress)
+uvage.keys_loop(onPress)
 ````
 
 You can *either* use `keys_loop` *or* use `timer_loop`, but not both.
@@ -540,7 +542,7 @@ def tick(keys):
   camera.draw(box)
   camera.display()
 
-gamebox.timer_loop(30, tick)
+uvage.timer_loop(30, tick)
 ````
 
 ## unpause
