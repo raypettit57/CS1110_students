@@ -18,13 +18,12 @@ The middle will usually create various gameboxes to be used later. For example:
 
 ````python
 # prep work: make the boxes and variables to be used later
-logo = uvage.from_image(0, 0,
-    "https://www.python.org/static/img/python-logo.png")
+logo = uvage.from_image(0, 0, "https://www.python.org/static/img/python-logo.png")
 
 score = 0
 ````
 
-Every PyGame program should end with an event loop. There are a lot of pieces to making these work, so uvage adds a simpler version:
+Every uvage program should end with an event loop. There are a lot of pieces to making these work, so uvage adds a simpler version:
 
 ````python
 # make a parameter-less method that will be called every frame.
