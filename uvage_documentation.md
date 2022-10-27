@@ -491,7 +491,7 @@ uvage.timer_loop(30, tick)
 ## is_pressing
 Usage: `is_pressing(key)`
 
-Given a valid keyname, returns `True` if that computer key is currently being pressed and `False` otherwise. If the key provided is not a valid key, a KeyError will be raised. See the list below for all valid key names.
+Given a valid string containing the name of a computer key, returns `True` if `key` is currently being pressed and `False` otherwise. If the key provided is not a valid key, a KeyError will be raised. See the list below for all valid key names.
 - backspace
 - tab
 - clear
